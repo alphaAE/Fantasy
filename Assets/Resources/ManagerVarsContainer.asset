@@ -18,5 +18,23 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 274864b118ac4f54589e32e7035cd77f, type: 3}
   - {fileID: 21300000, guid: 81cb795749aefac4ea7663bc3f7f71fb, type: 3}
   normalPlatformPre: {fileID: 385314883299571281, guid: cc71d650e944bdc408637d000a9c8f61, type: 3}
+  normalObstaclePres:
+  - {fileID: 385314883299571281, guid: 44d11cb2ad737504aa71516cf99b151d, type: 3}
+  - {fileID: 385314883299571281, guid: 6f178cb46d83fbc48801a5b89b25dc1e, type: 3}
+  icePlatformPre: {fileID: 385314883299571281, guid: fe40a3c51f806a34fa4d1987ddfb23d6, type: 3}
+  iceObstaclePres:
+  - {fileID: 385314883299571281, guid: ff2677c736e28bd428811948448d0b98, type: 3}
+  - {fileID: 385314883299571281, guid: f877607030b9e2d4d87763e583deac28, type: 3}
+  - {fileID: 385314883299571281, guid: 1e4f094deec65d54c9133df8008b8bf1, type: 3}
+  - {fileID: 385314883299571281, guid: 8277ea93daa4d334b8737af545031076, type: 3}
+  grassPlatformPre: {fileID: 385314883299571281, guid: a5b2105e17648114f947767381279420, type: 3}
+  grassObstaclePres:
+  - {fileID: 385314883299571281, guid: 6781536eebca2e040a586545af6b9cd4, type: 3}
+  - {fileID: 385314883299571281, guid: 71c0962a6536ee247957c61ff552fb19, type: 3}
+  - {fileID: 385314883299571281, guid: 189900ee8c961784398e1dd8a80ff5ae, type: 3}
+  firePlatformPre: {fileID: 385314883299571281, guid: 771a670d544481f40bf91c19ec76fcce, type: 3}
+  fireObstaclePres:
+  - {fileID: 385314883299571281, guid: e0a1f8cac69cbaf41809076fea34c78f, type: 3}
+  - {fileID: 385314883299571281, guid: d5afdb46ffd7f5e46aa2e19f4d6e8cff, type: 3}
   nextXPos: 0.554
   nextYPos: 0.645

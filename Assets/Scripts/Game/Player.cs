@@ -49,12 +49,12 @@ public class Player : MonoBehaviour {
         if (isLeft) {
             transform.localScale = new Vector3(-1, 1, 1);
             transform.DOMoveX(currentPlatformPos.x - _vars.nextXPos, 0.2f);
-            transform.DOMoveY(currentPlatformPos.y + _vars.nextYPos + 0.8f, 0.15f);
+            transform.DOMoveY(currentPlatformPos.y + _vars.nextYPos + 0.5f, 0.15f);
         }
         else {
             transform.localScale = new Vector3(1, 1, 1);
             transform.DOMoveX(currentPlatformPos.x + _vars.nextXPos, 0.2f);
-            transform.DOMoveY(currentPlatformPos.y + _vars.nextYPos + 0.8f, 0.15f);
+            transform.DOMoveY(currentPlatformPos.y + _vars.nextYPos + 0.5f, 0.15f);
         }
     }
 }
