@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 385314883299571295}
   - component: {fileID: 385314883299571294}
   - component: {fileID: 6170108291835526683}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: grassObstacle2
-  m_TagString: Platform
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,10 +95,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00471282, y: -0.027584996}
+  m_Offset: {x: 0.010937527, y: 0.38480237}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,5 +109,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3984509, y: 0.114285104}
+  m_Size: {x: 0.23660836, y: 0.25434119}
   m_EdgeRadius: 0

@@ -57,6 +57,8 @@ public class PlatformPool : MonoBehaviour {
         foreach (var item in pool) {
             if (!item.activeSelf) {
                 item.SetActive(true);
+                item.GetComponent<BoxCollider2D>().enabled = true;
+                item.GetComponent<SpriteRenderer>().sortingLayerName = "Platform";
                 return item;
             }
         }

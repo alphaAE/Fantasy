@@ -21,7 +21,10 @@ public class ManagerVars : ScriptableObject {
     public GameObject firePlatformPre;
     public List<GameObject> fireObstaclePres;
 
+    public GameObject deathEffect;
 
     public float nextXPos = 0.554f;
     public float nextYPos = 0.645f;
+
+    public float platformFallTime;
 }

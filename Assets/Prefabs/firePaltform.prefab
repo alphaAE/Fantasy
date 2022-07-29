@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 385314883299571295}
   - component: {fileID: 385314883299571294}
   - component: {fileID: 6170108291835526683}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: firePaltform
   m_TagString: Platform
   m_Icon: {fileID: 0}

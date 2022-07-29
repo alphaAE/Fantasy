@@ -10,11 +10,13 @@ public class GamePanel : MonoBehaviour {
 
     private void Awake() {
         EventCenter.AddListener(EventType.ShowGamePanel, ShowThisPanel);
+        EventCenter.AddListener<int>(EventType.UpdateScoreText, UpdateScoreText);
         Init();
     }
 
     private void OnDestroy() {
         EventCenter.RemoveListener(EventType.ShowGamePanel, ShowThisPanel);
+        EventCenter.RemoveListener<int>(EventType.ShowGamePanel, UpdateScoreText);
     }
 
     private void Init() {
@@ -37,10 +39,18 @@ public class GamePanel : MonoBehaviour {
     private void OnPauseButtonClick() {
         _btnPause.gameObject.SetActive(false);
         _btnPlay.gameObject.SetActive(true);
+        Time.timeScale = 0;
+        GameManager.Instance.IsGamePause = true;
     }
 
     private void OnPlayButtonClick() {
         _btnPlay.gameObject.SetActive(false);
         _btnPause.gameObject.SetActive(true);
+        Time.timeScale = 1;
+        GameManager.Instance.IsGamePause = false;
+    }
+
+    private void UpdateScoreText(int score) {
+        _textScore.text = score.ToString();
     }
 }

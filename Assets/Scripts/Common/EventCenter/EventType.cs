@@ -1,4 +1,6 @@
 public enum EventType {
-        ShowGamePanel,
-        SpawnNextPlatform
+    ShowGamePanel,
+    SpawnNextPlatform,
+    AddScore,
+    UpdateScoreText
 }

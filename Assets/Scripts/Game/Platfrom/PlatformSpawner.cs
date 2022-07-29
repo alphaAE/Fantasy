@@ -122,6 +122,8 @@ public class PlatformSpawner : MonoBehaviour {
             }
 
             var obj = PlatformPool.Instance.GetPlatformByTheme(_theme);
+            obj.GetComponent<BoxCollider2D>().enabled = false;
+            obj.GetComponent<SpriteRenderer>().sortingLayerName = "OldPlatfrom";
             obj.transform.position = info.pos;
             if (info.count > 0) {
                 _nextObstacleInfos.Add(info);
