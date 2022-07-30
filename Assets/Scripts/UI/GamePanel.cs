@@ -16,7 +16,7 @@ public class GamePanel : MonoBehaviour {
 
     private void OnDestroy() {
         EventCenter.RemoveListener(EventType.ShowGamePanel, ShowThisPanel);
-        EventCenter.RemoveListener<int>(EventType.ShowGamePanel, UpdateScoreText);
+        EventCenter.RemoveListener<int>(EventType.UpdateScoreText, UpdateScoreText);
     }
 
     private void Init() {

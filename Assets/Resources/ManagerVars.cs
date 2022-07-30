@@ -26,5 +26,5 @@ public class ManagerVars : ScriptableObject {
     public float nextXPos = 0.554f;
     public float nextYPos = 0.645f;
 
-    public float platformFallTime;
+    public float defaultPlatformFallTime = 3f;
 }

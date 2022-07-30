@@ -2,5 +2,6 @@ public enum EventType {
     ShowGamePanel,
     SpawnNextPlatform,
     AddScore,
-    UpdateScoreText
+    UpdateScoreText,
+    GameOver
 }

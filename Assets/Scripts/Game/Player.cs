@@ -9,9 +9,11 @@ public class Player : MonoBehaviour {
     private Transform _currentPlatform;
     private bool _isMoving = true;
     private ManagerVars _vars;
+    private SpriteRenderer _spriteRenderer;
 
     void Start() {
         _vars = ManagerVars.GetManagerVars();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update() {
@@ -35,8 +37,7 @@ public class Player : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.CompareTag("Platform")) {
             if (_currentPlatform && col.gameObject.transform != _currentPlatform) {
-                _currentPlatform.GetComponent<BoxCollider2D>().enabled = false;
-                _currentPlatform.GetComponent<SpriteRenderer>().sortingLayerName = "OldPlatform";
+                _currentPlatform.GetComponent<Platform>().ToOldPlatform();
                 EventCenter.Broadcast(EventType.AddScore);
             }
 
@@ -76,6 +77,13 @@ public class Player : MonoBehaviour {
         GameManager.Instance.IsGameOver = true;
         Debug.Log("GameOver");
         Instantiate(_vars.deathEffect, transform.position, Quaternion.identity);
+        StartCoroutine(ShowGameOverPanel());
+        _spriteRenderer.color = new Color(0, 0, 0, 0);
+    }
+
+    private IEnumerator ShowGameOverPanel() {
+        yield return new WaitForSeconds(1f);
+        EventCenter.Broadcast(EventType.GameOver);
         Destroy(gameObject);
     }
 }
