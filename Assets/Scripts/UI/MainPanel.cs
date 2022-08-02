@@ -4,14 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainPanel : MonoBehaviour {
+public class MainPanel : BasePanel {
     private Button _btnStart, _btnShop, _btnRank, _btnSound;
+    MainPanel() : base(EventType.ShowMainPanel) { }
 
-    private void Awake() {
-        Init();
-    }
-
-    private void Init() {
+    protected override void Init() {
+        //Button
         _btnStart = transform.Find("BtnStart").GetComponent<Button>();
         _btnStart.onClick.AddListener(OnStartButtonClick);
         _btnShop = transform.Find("Btns/BtnShop").GetComponent<Button>();

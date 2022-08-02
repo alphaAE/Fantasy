@@ -83,7 +83,7 @@ public class Player : MonoBehaviour {
 
     private IEnumerator ShowGameOverPanel() {
         yield return new WaitForSeconds(1f);
-        EventCenter.Broadcast(EventType.GameOver);
+        EventCenter.Broadcast(EventType.ShowOverPanel);
         Destroy(gameObject);
     }
 }

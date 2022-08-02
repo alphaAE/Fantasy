@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour {
         EventCenter.RemoveListener(EventType.AddScore, AddScore);
     }
 
+    private void Start() {
+        EventCenter.Broadcast(EventType.ShowMainPanel);
+    }
+
     public bool IsGameStarted { get; set; }
     public bool IsGamePause { get; set; }
     public bool IsGameOver { get; set; }

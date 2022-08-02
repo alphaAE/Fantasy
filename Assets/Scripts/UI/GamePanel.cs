@@ -4,36 +4,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GamePanel : MonoBehaviour {
+public class GamePanel : BasePanel {
     private Button _btnPause, _btnPlay;
     private Text _textScore, _textDiamondCount;
 
-    private void Awake() {
-        EventCenter.AddListener(EventType.ShowGamePanel, ShowThisPanel);
+    GamePanel() : base(EventType.ShowGamePanel) { }
+
+    private new void Awake() {
+        base.Awake();
         EventCenter.AddListener<int>(EventType.UpdateScoreText, UpdateScoreText);
-        Init();
     }
 
-    private void OnDestroy() {
-        EventCenter.RemoveListener(EventType.ShowGamePanel, ShowThisPanel);
+    private new void OnDestroy() {
+        base.OnDestroy();
         EventCenter.RemoveListener<int>(EventType.UpdateScoreText, UpdateScoreText);
     }
 
-    private void Init() {
+    protected override void Init() {
+        //Text
+        _textScore = transform.Find("TextScore").GetComponent<Text>();
+        _textDiamondCount = transform.Find("Diamond/TextDiamondCount").GetComponent<Text>();
+        //Button
         _btnPause = transform.Find("BtnPause").GetComponent<Button>();
         _btnPause.onClick.AddListener(OnPauseButtonClick);
         _btnPlay = transform.Find("BtnPlay").GetComponent<Button>();
         _btnPlay.onClick.AddListener(OnPlayButtonClick);
         _btnPlay.gameObject.SetActive(false);
-
-        _textScore = transform.Find("TextScore").GetComponent<Text>();
-        _textDiamondCount = transform.Find("Diamond/TextDiamondCount").GetComponent<Text>();
-
-        gameObject.SetActive(false);
-    }
-
-    private void ShowThisPanel() {
-        gameObject.SetActive(true);
     }
 
     private void OnPauseButtonClick() {
