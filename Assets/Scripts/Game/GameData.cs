@@ -1,3 +1,3 @@
-public class GameState {
+public class GameData {
     public static bool IsAgainGame = false;
 }

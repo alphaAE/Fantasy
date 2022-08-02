@@ -39,7 +39,7 @@ public class OverPanel : BasePanel {
     }
 
     private void OnAgainButtonClick() {
-        GameState.IsAgainGame = true;
+        GameData.IsAgainGame = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
