@@ -37,5 +37,8 @@ MonoBehaviour:
   - {fileID: 385314883299571281, guid: e0a1f8cac69cbaf41809076fea34c78f, type: 3}
   - {fileID: 385314883299571281, guid: d5afdb46ffd7f5e46aa2e19f4d6e8cff, type: 3}
   deathEffect: {fileID: 17474302686689601, guid: a52b6fcb609b1a04b9e32b9b177c285b, type: 3}
+  pickupEffect: {fileID: 6175623262877331185, guid: 3aab61df42a7a25428d8b6102416be73, type: 3}
+  diamondPre: {fileID: 248805290569872963, guid: 66ab2168daac9f8489f79a2180d8c53c, type: 3}
   nextXPos: 0.554
   nextYPos: 0.645
+  defaultPlatformFallTime: 3

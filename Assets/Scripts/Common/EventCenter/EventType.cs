@@ -3,9 +3,15 @@ public enum EventType {
     ShowMainPanel,
     ShowGamePanel,
     ShowOverPanel,
-    
-    SpawnNextPlatform,
+
+    //Score
     AddScore,
     UpdateScoreText,
-    
+
+    //Pickup
+    AddDiamond,
+    UpdateDiamondText,
+
+    //Other
+    SpawnNextPlatform,
 }

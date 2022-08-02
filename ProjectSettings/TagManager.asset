@@ -7,6 +7,7 @@ TagManager:
   - Platform
   - Obstacle
   - DeadZone
+  - Pickup
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - UI
   - Paltform
   - Obstacle
-  - 
+  - Pickup
   - 
   - 
   - 
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: OldPlatform
     uniqueID: 2775069243
+    locked: 0
+  - name: Pickup
+    uniqueID: 3232606397
     locked: 0
   - name: Effect
     uniqueID: 1539775141

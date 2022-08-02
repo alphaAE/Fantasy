@@ -13,16 +13,19 @@ public class GameManager : MonoBehaviour {
 
     public float FallTime { get; set; }
     public int Score { get; set; }
+    public int Diamond { get; set; }
 
     private void Awake() {
         Instance = this;
         _vars = ManagerVars.GetManagerVars();
         FallTime = _vars.defaultPlatformFallTime;
         EventCenter.AddListener(EventType.AddScore, AddScore);
+        EventCenter.AddListener(EventType.AddDiamond, AddDiamond);
     }
 
     private void OnDestroy() {
         EventCenter.RemoveListener(EventType.AddScore, AddScore);
+        EventCenter.RemoveListener(EventType.AddDiamond, AddDiamond);
     }
 
     private void Start() {
@@ -48,5 +51,10 @@ public class GameManager : MonoBehaviour {
                 FallTime = 0.4f;
             }
         }
+    }
+
+    private void AddDiamond() {
+        Diamond++;
+        EventCenter.Broadcast(EventType.UpdateDiamondText, Diamond);
     }
 }

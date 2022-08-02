@@ -10,10 +10,14 @@ public class Player : MonoBehaviour {
     private bool _isMoving = true;
     private ManagerVars _vars;
     private SpriteRenderer _spriteRenderer;
+    private BoxCollider2D _boxCollider2D;
+    private CircleCollider2D _circleCollider2D;
 
     void Start() {
         _vars = ManagerVars.GetManagerVars();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _boxCollider2D = GetComponent<BoxCollider2D>();
+        _circleCollider2D = GetComponent<CircleCollider2D>();
     }
 
     void Update() {
@@ -43,6 +47,11 @@ public class Player : MonoBehaviour {
 
             _currentPlatform = col.gameObject.transform;
             _isMoving = false;
+        }
+        else if (col.gameObject.CompareTag("Pickup")) {
+            Destroy(col.gameObject);
+            Instantiate(_vars.pickupEffect, col.gameObject.transform.position, Quaternion.identity);
+            EventCenter.Broadcast(EventType.AddDiamond);
         }
         else if (col.gameObject.CompareTag("Obstacle")) {
             Dead();
@@ -79,6 +88,8 @@ public class Player : MonoBehaviour {
         Instantiate(_vars.deathEffect, transform.position, Quaternion.identity);
         StartCoroutine(ShowGameOverPanel());
         _spriteRenderer.color = new Color(0, 0, 0, 0);
+        _circleCollider2D.enabled = false;
+        _boxCollider2D.enabled = false;
     }
 
     private IEnumerator ShowGameOverPanel() {

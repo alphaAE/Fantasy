@@ -87,8 +87,15 @@ public class PlatformSpawner : MonoBehaviour {
 
         var obj = PlatformPool.Instance.GetPlatformByTheme(_theme);
         obj.transform.position = _currentSpawnPos;
+
+        // 概率生成钻石
+        if (Random.Range(1, 101) < 20) {
+            var pos = new Vector3(_currentSpawnPos.x, _currentSpawnPos.y + 0.44f, _currentSpawnPos.z);
+            Instantiate(_vars.diamondPre, pos, Quaternion.identity);
+        }
     }
 
+    // 生成障碍平台
     private void SpawnObstacle() {
         Vector3 obstaclePos;
         if (!_isLeftSpawn) {
@@ -106,6 +113,7 @@ public class PlatformSpawner : MonoBehaviour {
         _nextObstacleInfos.Add(new(obstaclePos, Random.Range(0, 6), !_isLeftSpawn));
     }
 
+    // 生成障碍后续假平台
     private void SpawnObstacleLater() {
         List<NextObstacleInfo> copy = new(_nextObstacleInfos);
         _nextObstacleInfos.Clear();

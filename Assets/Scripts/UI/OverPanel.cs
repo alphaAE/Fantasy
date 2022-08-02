@@ -28,7 +28,7 @@ public class OverPanel : BasePanel {
     protected override void ShowThisPanel() {
         _textScore.text = GameManager.Instance.Score.ToString();
         _textMaxScore.text = GameManager.Instance.Score.ToString();
-        _textDiamondCount.text = "+" + 0;
+        _textDiamondCount.text = "+" + GameManager.Instance.Diamond;
         base.ShowThisPanel();
     }
 

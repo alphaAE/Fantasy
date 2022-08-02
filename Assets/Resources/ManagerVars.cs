@@ -22,7 +22,11 @@ public class ManagerVars : ScriptableObject {
     public List<GameObject> fireObstaclePres;
 
     public GameObject deathEffect;
+    public GameObject pickupEffect;
 
+    public GameObject diamondPre;
+
+    //Value
     public float nextXPos = 0.554f;
     public float nextYPos = 0.645f;
 

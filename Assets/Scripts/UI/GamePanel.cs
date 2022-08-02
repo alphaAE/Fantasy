@@ -13,11 +13,13 @@ public class GamePanel : BasePanel {
     private new void Awake() {
         base.Awake();
         EventCenter.AddListener<int>(EventType.UpdateScoreText, UpdateScoreText);
+        EventCenter.AddListener<int>(EventType.UpdateDiamondText, UpdateDiamondText);
     }
 
     private new void OnDestroy() {
         base.OnDestroy();
         EventCenter.RemoveListener<int>(EventType.UpdateScoreText, UpdateScoreText);
+        EventCenter.RemoveListener<int>(EventType.UpdateDiamondText, UpdateDiamondText);
     }
 
     protected override void Init() {
@@ -48,5 +50,9 @@ public class GamePanel : BasePanel {
 
     private void UpdateScoreText(int score) {
         _textScore.text = score.ToString();
+    }
+
+    private void UpdateDiamondText(int count) {
+        _textDiamondCount.text = count.ToString();
     }
 }

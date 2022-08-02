@@ -12,7 +12,6 @@ public abstract class BasePanel : MonoBehaviour {
         EventCenter.AddListener(_showEvent, ShowThisPanel);
         Init();
         gameObject.SetActive(false);
-        print("Base!");
     }
 
     protected void OnDestroy() {
