@@ -63,7 +63,6 @@ public class PlatformPool : MonoBehaviour {
 
         var platformObj = Instantiate(_platformDict[theme]);
         pool.Add(platformObj);
-
         return platformObj;
     }
 

@@ -12,11 +12,11 @@ public class OverPanel : MonoBehaviour {
 
     private void Awake() {
         Init();
-        EventCenter.AddListener(EventType.GameOver, ShowGameOverPanel);
+        EventCenter.AddListener(EventType.GameOver, ShowThisPanel);
     }
 
     private void OnDestroy() {
-        EventCenter.RemoveListener(EventType.GameOver, ShowGameOverPanel);
+        EventCenter.RemoveListener(EventType.GameOver, ShowThisPanel);
     }
 
     private void Init() {
@@ -34,7 +34,7 @@ public class OverPanel : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    private void ShowGameOverPanel() {
+    private void ShowThisPanel() {
         _textScore.text = GameManager.Instance.Score.ToString();
         _textMaxScore.text = GameManager.Instance.Score.ToString();
         _textDiamondCount.text = "+" + 0;
@@ -48,6 +48,7 @@ public class OverPanel : MonoBehaviour {
     }
 
     private void OnAgainButtonClick() {
+        GameState.IsAgainGame = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

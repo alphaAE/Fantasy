@@ -19,6 +19,7 @@ public class Platform : MonoBehaviour {
 
     private void OnEnable() {
         _fallTime = GameManager.Instance.FallTime;
+        _isFall = false;
         ResetFromPool();
     }
 
