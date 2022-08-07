@@ -20,11 +20,15 @@ public class ManagerVars : ScriptableObject {
     public List<GameObject> grassObstaclePres;
     public GameObject firePlatformPre;
     public List<GameObject> fireObstaclePres;
+    public List<Sprite> skinSprites;
+    public List<String> skinNames;
+    public List<String> skinPrices;
 
     public GameObject deathEffect;
     public GameObject pickupEffect;
 
     public GameObject diamondPre;
+    public GameObject itemSkinPre;
 
     //Value
     public float nextXPos = 0.554f;

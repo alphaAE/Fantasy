@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GamePanel : BasePanel {
-    private Button _btnPause, _btnPlay;
     private Text _textScore, _textDiamondCount;
+    private Button _btnPause, _btnPlay;
 
     GamePanel() : base(EventType.ShowGamePanel) { }
 

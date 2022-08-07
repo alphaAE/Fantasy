@@ -26,7 +26,10 @@ public class MainPanel : BasePanel {
         GameManager.Instance.IsGameStarted = true;
     }
 
-    private void OnShopButtonClick() { }
+    private void OnShopButtonClick() {
+        EventCenter.Broadcast(EventType.ShowShopPanel);
+    }
+
     private void OnRankButtonClick() { }
     private void OnSoundButtonClick() { }
 }

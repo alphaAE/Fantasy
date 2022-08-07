@@ -3,6 +3,7 @@ public enum EventType {
     ShowMainPanel,
     ShowGamePanel,
     ShowOverPanel,
+    ShowShopPanel,
 
     //Score
     AddScore,
