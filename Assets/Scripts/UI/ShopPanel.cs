@@ -124,6 +124,7 @@ public class ShopPanel : BasePanel {
             _parent.GetChild(_currentSkinIndex).GetComponentInChildren<Image>().color = Color.white;
         }
         else {
+            EventCenter.Broadcast(EventType.ShowHint, "钻石不足");
             Debug.Log("钻石不足");
         }
     }
