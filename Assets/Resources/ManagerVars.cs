@@ -21,8 +21,9 @@ public class ManagerVars : ScriptableObject {
     public GameObject firePlatformPre;
     public List<GameObject> fireObstaclePres;
     public List<Sprite> skinSprites;
+    public List<Sprite> inGameSkinSprites;
     public List<String> skinNames;
-    public List<String> skinPrices;
+    public List<int> skinPrices;
 
     public GameObject deathEffect;
     public GameObject pickupEffect;

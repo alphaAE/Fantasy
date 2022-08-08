@@ -13,6 +13,11 @@ public enum EventType {
     AddDiamond,
     UpdateDiamondText,
 
+    //Skin
+    BuySkin,
+    SelectSkin,
+
     //Other
     SpawnNextPlatform,
+    ResetGame,
 }

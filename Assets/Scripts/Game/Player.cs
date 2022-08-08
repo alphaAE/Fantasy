@@ -13,11 +13,21 @@ public class Player : MonoBehaviour {
     private BoxCollider2D _boxCollider2D;
     private CircleCollider2D _circleCollider2D;
 
+    private void Awake() {
+        EventCenter.AddListener<int>(EventType.SelectSkin, SkinChange);
+    }
+
+    private void OnDestroy() {
+        EventCenter.RemoveListener<int>(EventType.SelectSkin, SkinChange);
+    }
+
     void Start() {
         _vars = ManagerVars.GetManagerVars();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
         _circleCollider2D = GetComponent<CircleCollider2D>();
+
+        _spriteRenderer.sprite = _vars.inGameSkinSprites[GameManager.Instance.Data.SelectSkin];
     }
 
     void Update() {
@@ -59,6 +69,10 @@ public class Player : MonoBehaviour {
         else if (col.gameObject.CompareTag("DeadZone")) {
             Dead();
         }
+    }
+
+    private void SkinChange(int index) {
+        _spriteRenderer.sprite = _vars.inGameSkinSprites[index];
     }
 
     private void Jump(bool isLeft = false) {

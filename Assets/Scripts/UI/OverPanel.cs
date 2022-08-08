@@ -35,11 +35,11 @@ public class OverPanel : BasePanel {
     private void OnRankButtonClick() { }
 
     private void OnHomeButtonClick() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnAgainButtonClick() {
         GameTempData.isAgainGame = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

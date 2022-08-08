@@ -29,7 +29,9 @@ public class ShopPanel : BasePanel {
         _btnBack.onClick.AddListener(OnBackButtonClick);
         _btnSelected = transform.Find("BtnSelected").GetComponent<Button>();
         _btnSelect = transform.Find("BtnSelect").GetComponent<Button>();
+        _btnSelect.onClick.AddListener(OnSelectButtonClick);
         _btnBuy = transform.Find("BtnBuy").GetComponent<Button>();
+        _btnBuy.onClick.AddListener(OnBuyButtonClick);
 
         //Scroll Skins
         _parent = transform.Find("ScrollSkins/Parent");
@@ -49,21 +51,10 @@ public class ShopPanel : BasePanel {
     private void Start() {
         _textDiamondCount.text = GameManager.Instance.Data.DiamondsCount.ToString();
         //设置按钮
-        if (_currentSkinIndex == GameManager.Instance.Data.SelectSkin) {
-            _btnSelected.gameObject.SetActive(true);
-            _btnSelect.gameObject.SetActive(false);
-            _btnBuy.gameObject.SetActive(false);
-        }
-        else if (!GameManager.Instance.Data.SkinUnlocker[_currentSkinIndex]) {
-            _btnSelected.gameObject.SetActive(false);
-            _btnSelect.gameObject.SetActive(false);
-            _btnBuy.gameObject.SetActive(true);
-        }
-        else {
-            _btnSelected.gameObject.SetActive(false);
-            _btnSelect.gameObject.SetActive(true);
-            _btnBuy.gameObject.SetActive(false);
-        }
+        _btnSelected.gameObject.SetActive(true);
+        _btnSelect.gameObject.SetActive(false);
+        _btnBuy.gameObject.SetActive(false);
+        _parent.DOLocalMoveX(-_itemWidth * 1.5f + GameManager.Instance.Data.SelectSkin * -_itemWidth, 0.2f);
     }
 
     private void Update() {
@@ -87,7 +78,7 @@ public class ShopPanel : BasePanel {
             //设置名字
             _textSkinName.text = _vars.skinNames[_currentSkinIndex];
             //设置价格
-            _textBuyDiamondCount.text = _vars.skinPrices[_currentSkinIndex];
+            _textBuyDiamondCount.text = _vars.skinPrices[_currentSkinIndex].ToString();
             //设置按钮
             if (_currentSkinIndex == GameManager.Instance.Data.SelectSkin) {
                 _btnSelected.gameObject.SetActive(true);
@@ -114,5 +105,26 @@ public class ShopPanel : BasePanel {
 
     private void OnBackButtonClick() {
         gameObject.SetActive(false);
+    }
+
+    private void OnSelectButtonClick() {
+        EventCenter.Broadcast(EventType.SelectSkin, _currentSkinIndex);
+        _btnSelected.gameObject.SetActive(true);
+        _btnSelect.gameObject.SetActive(false);
+        _btnBuy.gameObject.SetActive(false);
+    }
+
+    private void OnBuyButtonClick() {
+        if (GameManager.Instance.BuySkin(_currentSkinIndex)) {
+            EventCenter.Broadcast(EventType.SelectSkin, _currentSkinIndex);
+            _btnSelected.gameObject.SetActive(true);
+            _btnSelect.gameObject.SetActive(false);
+            _btnBuy.gameObject.SetActive(false);
+            _textDiamondCount.text = GameManager.Instance.Data.DiamondsCount.ToString();
+            _parent.GetChild(_currentSkinIndex).GetComponentInChildren<Image>().color = Color.white;
+        }
+        else {
+            Debug.Log("钻石不足");
+        }
     }
 }

@@ -41,16 +41,17 @@ MonoBehaviour:
   - {fileID: 21300004, guid: 0c7b4faa2ba890e45a9bcb89c3349cde, type: 3}
   - {fileID: 21300008, guid: 0c7b4faa2ba890e45a9bcb89c3349cde, type: 3}
   - {fileID: 21300012, guid: 0c7b4faa2ba890e45a9bcb89c3349cde, type: 3}
+  inGameSkinSprites:
+  - {fileID: 21300002, guid: 0c7b4faa2ba890e45a9bcb89c3349cde, type: 3}
+  - {fileID: 21300006, guid: 0c7b4faa2ba890e45a9bcb89c3349cde, type: 3}
+  - {fileID: 21300010, guid: 0c7b4faa2ba890e45a9bcb89c3349cde, type: 3}
+  - {fileID: 21300014, guid: 0c7b4faa2ba890e45a9bcb89c3349cde, type: 3}
   skinNames:
   - "\u9ED8\u8BA4"
   - "\u5FCD\u8005"
   - "\u970D\u6BD4\u7279\u4EBA"
   - "\u7EFF\u5DE8\u4EBA"
-  skinPrices:
-  - 0
-  - 30
-  - 50
-  - 70
+  skinPrices: 000000001e0000003200000046000000
   deathEffect: {fileID: 17474302686689601, guid: a52b6fcb609b1a04b9e32b9b177c285b, type: 3}
   pickupEffect: {fileID: 6175623262877331185, guid: 3aab61df42a7a25428d8b6102416be73, type: 3}
   diamondPre: {fileID: 248805290569872963, guid: 66ab2168daac9f8489f79a2180d8c53c, type: 3}

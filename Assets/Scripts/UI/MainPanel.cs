@@ -2,13 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MainPanel : BasePanel {
+    private ManagerVars _vars;
     private Button _btnStart, _btnShop, _btnRank, _btnSound;
+    private LongClickButton _lBtnSound;
     MainPanel() : base(EventType.ShowMainPanel) { }
 
+    private new void Awake() {
+        base.Awake();
+        EventCenter.AddListener<int>(EventType.SelectSkin, SkinChange);
+    }
+
+    private new void OnDestroy() {
+        base.OnDestroy();
+        EventCenter.RemoveListener<int>(EventType.SelectSkin, SkinChange);
+    }
+
     protected override void Init() {
+        _vars = ManagerVars.GetManagerVars();
         //Button
         _btnStart = transform.Find("BtnStart").GetComponent<Button>();
         _btnStart.onClick.AddListener(OnStartButtonClick);
@@ -16,8 +30,16 @@ public class MainPanel : BasePanel {
         _btnShop.onClick.AddListener(OnShopButtonClick);
         _btnRank = transform.Find("Btns/BtnRank").GetComponent<Button>();
         _btnRank.onClick.AddListener(OnRankButtonClick);
-        _btnSound = transform.Find("Btns/BtnSound").GetComponent<Button>();
-        _btnSound.onClick.AddListener(OnSoundButtonClick);
+        _lBtnSound = transform.Find("Btns/BtnSound").GetComponent<LongClickButton>();
+        _lBtnSound.onClick.AddListener(OnSoundButtonClick);
+        _lBtnSound.OnLongButtonClick.AddListener(OnSoundLongButtonClick);
+
+        _btnShop.transform.GetChild(0).GetComponent<Image>().sprite =
+            _vars.skinSprites[GameManager.Instance.Data.SelectSkin];
+    }
+
+    private void SkinChange(int index) {
+        _btnShop.transform.GetChild(0).GetComponent<Image>().sprite = _vars.skinSprites[index];
     }
 
     private void OnStartButtonClick() {
@@ -32,4 +54,8 @@ public class MainPanel : BasePanel {
 
     private void OnRankButtonClick() { }
     private void OnSoundButtonClick() { }
+
+    private void OnSoundLongButtonClick() {
+        EventCenter.Broadcast(EventType.ResetGame);
+    }
 }
