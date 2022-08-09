@@ -54,6 +54,7 @@ public class ShopPanel : BasePanel {
         _btnSelected.gameObject.SetActive(true);
         _btnSelect.gameObject.SetActive(false);
         _btnBuy.gameObject.SetActive(false);
+        _textSkinName.text = _vars.skinNames[_currentSkinIndex];
         _parent.DOLocalMoveX(-_itemWidth * 1.5f + GameManager.Instance.Data.SelectSkin * -_itemWidth, 0.2f);
     }
 
