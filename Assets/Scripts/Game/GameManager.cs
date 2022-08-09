@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
         EventCenter.AddListener<int>(EventType.SelectSkin, SelectSkin);
         EventCenter.AddListener(EventType.GameOver, SaveAddScore);
         EventCenter.AddListener(EventType.GameOver, SaveAddDiamond);
+        EventCenter.AddListener<bool>(EventType.SetAudio, SetAudio);
 
         //GameData
         LoadData();
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour {
         EventCenter.RemoveListener<int>(EventType.SelectSkin, SelectSkin);
         EventCenter.RemoveListener(EventType.GameOver, SaveAddScore);
         EventCenter.RemoveListener(EventType.GameOver, SaveAddDiamond);
+        EventCenter.RemoveListener<bool>(EventType.SetAudio, SetAudio);
 
         //GameData
         SaveData();
@@ -169,5 +171,10 @@ public class GameManager : MonoBehaviour {
         SaveData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Debug.Log("游戏已重置");
+    }
+
+    private void SetAudio(bool isOpen) {
+        Data.IsMusicOn = isOpen;
+        SaveData();
     }
 }

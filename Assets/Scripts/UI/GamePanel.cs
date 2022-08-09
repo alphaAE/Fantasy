@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GamePanel : BasePanel {
+    private ManagerVars _vars;
     private Text _textScore, _textDiamondCount;
     private Button _btnPause, _btnPlay;
 
@@ -23,6 +24,7 @@ public class GamePanel : BasePanel {
     }
 
     protected override void Init() {
+        _vars = ManagerVars.GetManagerVars();
         //Text
         _textScore = transform.Find("TextScore").GetComponent<Text>();
         _textDiamondCount = transform.Find("Diamond/TextDiamondCount").GetComponent<Text>();
@@ -35,6 +37,7 @@ public class GamePanel : BasePanel {
     }
 
     private void OnPauseButtonClick() {
+        EventCenter.Broadcast(EventType.PlayAudio, _vars.buttonClip);
         _btnPause.gameObject.SetActive(false);
         _btnPlay.gameObject.SetActive(true);
         Time.timeScale = 0;
@@ -42,6 +45,7 @@ public class GamePanel : BasePanel {
     }
 
     private void OnPlayButtonClick() {
+        EventCenter.Broadcast(EventType.PlayAudio, _vars.buttonClip);
         _btnPlay.gameObject.SetActive(false);
         _btnPause.gameObject.SetActive(true);
         Time.timeScale = 1;

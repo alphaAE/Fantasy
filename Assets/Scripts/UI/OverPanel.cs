@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OverPanel : BasePanel {
+    private ManagerVars _vars;
     private Text _textScore, _textMaxScore, _textDiamondCount;
     private Button _btnRank, _btnHome, _btnAgain;
     private GameObject _imgNew;
@@ -13,6 +14,7 @@ public class OverPanel : BasePanel {
     OverPanel() : base(EventType.ShowOverPanel) { }
 
     protected override void Init() {
+        _vars = ManagerVars.GetManagerVars();
         //Text
         _textScore = transform.Find("TextScore").GetComponent<Text>();
         _textMaxScore = transform.Find("MaxScore/TextMaxScore").GetComponent<Text>();
@@ -44,14 +46,17 @@ public class OverPanel : BasePanel {
     }
 
     private void OnRankButtonClick() {
+        EventCenter.Broadcast(EventType.PlayAudio, _vars.buttonClip);
         EventCenter.Broadcast(EventType.ShowRankPanel);
     }
 
     private void OnHomeButtonClick() {
+        EventCenter.Broadcast(EventType.PlayAudio, _vars.buttonClip);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnAgainButtonClick() {
+        EventCenter.Broadcast(EventType.PlayAudio, _vars.buttonClip);
         GameTempData.isAgainGame = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class MainPanel : BasePanel {
     private ManagerVars _vars;
-    private Button _btnStart, _btnShop, _btnRank, _btnSound;
+    private Button _btnStart, _btnShop, _btnRank;
     private LongClickButton _lBtnSound;
     MainPanel() : base(EventType.ShowMainPanel) { }
 
@@ -36,6 +36,8 @@ public class MainPanel : BasePanel {
 
         _btnShop.transform.GetChild(0).GetComponent<Image>().sprite =
             _vars.skinSprites[GameManager.Instance.Data.SelectSkin];
+        _lBtnSound.transform.GetChild(0).GetComponent<Image>().sprite =
+            GameManager.Instance.Data.IsMusicOn ? _vars.soundOn : _vars.soundOff;
     }
 
     private void SkinChange(int index) {
@@ -43,19 +45,28 @@ public class MainPanel : BasePanel {
     }
 
     private void OnStartButtonClick() {
+        EventCenter.Broadcast(EventType.PlayAudio, _vars.buttonClip);
         EventCenter.Broadcast(EventType.ShowGamePanel);
         gameObject.SetActive(false);
         GameManager.Instance.IsGameStarted = true;
     }
 
     private void OnShopButtonClick() {
+        EventCenter.Broadcast(EventType.PlayAudio, _vars.buttonClip);
         EventCenter.Broadcast(EventType.ShowShopPanel);
     }
 
     private void OnRankButtonClick() {
+        EventCenter.Broadcast(EventType.PlayAudio, _vars.buttonClip);
         EventCenter.Broadcast(EventType.ShowRankPanel);
     }
-    private void OnSoundButtonClick() { }
+
+    private void OnSoundButtonClick() {
+        EventCenter.Broadcast(EventType.PlayAudio, _vars.buttonClip);
+        EventCenter.Broadcast(EventType.SetAudio, !GameManager.Instance.Data.IsMusicOn);
+        _lBtnSound.transform.GetChild(0).GetComponent<Image>().sprite =
+            GameManager.Instance.Data.IsMusicOn ? _vars.soundOn : _vars.soundOff;
+    }
 
     private void OnSoundLongButtonClick() {
         EventCenter.Broadcast(EventType.ResetGame);

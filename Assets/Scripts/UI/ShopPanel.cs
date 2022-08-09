@@ -104,10 +104,12 @@ public class ShopPanel : BasePanel {
     }
 
     private void OnBackButtonClick() {
+        EventCenter.Broadcast(EventType.PlayAudio, _vars.buttonClip);
         gameObject.SetActive(false);
     }
 
     private void OnSelectButtonClick() {
+        EventCenter.Broadcast(EventType.PlayAudio, _vars.buttonClip);
         EventCenter.Broadcast(EventType.SelectSkin, _currentSkinIndex);
         _btnSelected.gameObject.SetActive(true);
         _btnSelect.gameObject.SetActive(false);
@@ -115,6 +117,7 @@ public class ShopPanel : BasePanel {
     }
 
     private void OnBuyButtonClick() {
+        EventCenter.Broadcast(EventType.PlayAudio, _vars.buttonClip);
         if (GameManager.Instance.BuySkin(_currentSkinIndex)) {
             EventCenter.Broadcast(EventType.SelectSkin, _currentSkinIndex);
             _btnSelected.gameObject.SetActive(true);

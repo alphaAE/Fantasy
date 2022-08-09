@@ -31,6 +31,10 @@ public class ManagerVars : ScriptableObject {
     public GameObject diamondPre;
     public GameObject itemSkinPre;
 
+    public Sprite soundOn, soundOff;
+    public AudioClip buttonClip, diamondClip, fallClip, hitClip, jumpClip;
+
+
     //Value
     public float nextXPos = 0.554f;
     public float nextYPos = 0.645f;

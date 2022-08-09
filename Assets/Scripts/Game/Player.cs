@@ -49,6 +49,10 @@ public class Player : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D col) {
+        if (GameManager.Instance.IsGameOver) {
+            return;
+        }
+
         if (col.gameObject.CompareTag("Platform")) {
             if (_currentPlatform && col.gameObject.transform != _currentPlatform) {
                 _currentPlatform.GetComponent<Platform>().ToOldPlatform();
@@ -62,11 +66,14 @@ public class Player : MonoBehaviour {
             Destroy(col.gameObject);
             Instantiate(_vars.pickupEffect, col.gameObject.transform.position, Quaternion.identity);
             EventCenter.Broadcast(EventType.AddDiamond);
+            EventCenter.Broadcast(EventType.PlayAudio, _vars.diamondClip);
         }
         else if (col.gameObject.CompareTag("Obstacle")) {
+            EventCenter.Broadcast(EventType.PlayAudio, _vars.hitClip);
             Dead();
         }
         else if (col.gameObject.CompareTag("DeadZone")) {
+            EventCenter.Broadcast(EventType.PlayAudio, _vars.fallClip);
             Dead();
         }
     }
@@ -81,6 +88,7 @@ public class Player : MonoBehaviour {
         }
 
 
+        EventCenter.Broadcast(EventType.PlayAudio, _vars.jumpClip);
         EventCenter.Broadcast(EventType.SpawnNextPlatform);
         _isMoving = true;
         Vector3 currentPlatformPos = _currentPlatform.position;
@@ -97,10 +105,6 @@ public class Player : MonoBehaviour {
     }
 
     private void Dead() {
-        if (GameManager.Instance.IsGameOver) {
-            return;
-        }
-
         GameManager.Instance.IsGameOver = true;
         Debug.Log("GameOver");
         EventCenter.Broadcast(EventType.GameOver);

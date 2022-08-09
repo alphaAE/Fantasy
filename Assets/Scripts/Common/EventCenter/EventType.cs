@@ -25,5 +25,6 @@ public enum EventType {
     //Other
     SpawnNextPlatform,
     ResetGame,
-    SetMusic
+    SetAudio,
+    PlayAudio,
 }
