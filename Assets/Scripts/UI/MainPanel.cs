@@ -52,7 +52,9 @@ public class MainPanel : BasePanel {
         EventCenter.Broadcast(EventType.ShowShopPanel);
     }
 
-    private void OnRankButtonClick() { }
+    private void OnRankButtonClick() {
+        EventCenter.Broadcast(EventType.ShowRankPanel);
+    }
     private void OnSoundButtonClick() { }
 
     private void OnSoundLongButtonClick() {

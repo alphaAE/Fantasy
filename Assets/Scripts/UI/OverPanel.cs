@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class OverPanel : BasePanel {
     private Text _textScore, _textMaxScore, _textDiamondCount;
     private Button _btnRank, _btnHome, _btnAgain;
+    private GameObject _imgNew;
 
     OverPanel() : base(EventType.ShowOverPanel) { }
 
@@ -23,16 +24,28 @@ public class OverPanel : BasePanel {
         _btnHome.onClick.AddListener(OnHomeButtonClick);
         _btnAgain = transform.Find("BtnAgain").GetComponent<Button>();
         _btnAgain.onClick.AddListener(OnAgainButtonClick);
+        //GameObject
+        _imgNew = transform.Find("New").gameObject;
     }
 
     protected override void ShowThisPanel() {
         _textScore.text = GameManager.Instance.Score.ToString();
-        _textMaxScore.text = GameManager.Instance.Score.ToString();
+        _textMaxScore.text = GameManager.Instance.Data.BestScoreArr[0].ToString();
         _textDiamondCount.text = "+" + GameManager.Instance.Diamond;
+
+        if (GameManager.Instance.Score == GameManager.Instance.Data.BestScoreArr[0]) {
+            _imgNew.SetActive(true);
+        }
+        else {
+            _imgNew.SetActive(false);
+        }
+
         base.ShowThisPanel();
     }
 
-    private void OnRankButtonClick() { }
+    private void OnRankButtonClick() {
+        EventCenter.Broadcast(EventType.ShowRankPanel);
+    }
 
     private void OnHomeButtonClick() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

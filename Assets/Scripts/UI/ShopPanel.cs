@@ -125,7 +125,6 @@ public class ShopPanel : BasePanel {
         }
         else {
             EventCenter.Broadcast(EventType.ShowHint, "钻石不足");
-            Debug.Log("钻石不足");
         }
     }
 }

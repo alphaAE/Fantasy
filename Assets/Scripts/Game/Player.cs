@@ -97,8 +97,13 @@ public class Player : MonoBehaviour {
     }
 
     private void Dead() {
+        if (GameManager.Instance.IsGameOver) {
+            return;
+        }
+
         GameManager.Instance.IsGameOver = true;
         Debug.Log("GameOver");
+        EventCenter.Broadcast(EventType.GameOver);
         Instantiate(_vars.deathEffect, transform.position, Quaternion.identity);
         StartCoroutine(ShowGameOverPanel());
         _spriteRenderer.color = new Color(0, 0, 0, 0);

@@ -4,6 +4,7 @@ public enum EventType {
     ShowGamePanel,
     ShowOverPanel,
     ShowShopPanel,
+    ShowRankPanel,
     ShowHint,
 
     //Score
@@ -18,7 +19,11 @@ public enum EventType {
     BuySkin,
     SelectSkin,
 
+    //Cycle
+    GameOver,
+
     //Other
     SpawnNextPlatform,
     ResetGame,
+    SetMusic
 }
