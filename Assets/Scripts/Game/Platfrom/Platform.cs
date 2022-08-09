@@ -47,7 +47,6 @@ public class Platform : MonoBehaviour {
     // 转变为跳跃后的平台
     public void ToOldPlatform() {
         _boxCollider2D.enabled = false;
-        _spriteRenderer.sortingLayerName = "OldPlatform";
     }
 
     public void ToFall() {

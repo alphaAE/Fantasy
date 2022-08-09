@@ -63,6 +63,9 @@ public class Player : MonoBehaviour {
         if (col.gameObject.CompareTag("Platform")) {
             if (_currentPlatform && col.gameObject.transform != _currentPlatform) {
                 _currentPlatform.GetComponent<Platform>().ToOldPlatform();
+                // var pos = transform.position;
+                // transform.position = new Vector3(pos.x, pos.y,
+                //     _currentPlatform.position.z - 0.1f);
                 EventCenter.Broadcast(EventType.AddScore);
             }
 
@@ -103,11 +106,14 @@ public class Player : MonoBehaviour {
             transform.localScale = new Vector3(-1, 1, 1);
             transform.DOMoveX(currentPlatformPos.x - _vars.nextXPos, 0.2f);
             transform.DOMoveY(currentPlatformPos.y + _vars.nextYPos + 0.4f, 0.15f);
+            transform.DOMoveZ(currentPlatformPos.z + 1f - 0.5f, 0.15f);
         }
         else {
             transform.localScale = new Vector3(1, 1, 1);
             transform.DOMoveX(currentPlatformPos.x + _vars.nextXPos, 0.2f);
             transform.DOMoveY(currentPlatformPos.y + _vars.nextYPos + 0.4f, 0.15f);
+            transform.DOMoveZ(currentPlatformPos.z + 1f - 0.5f, 0.15f);
+
         }
     }
 

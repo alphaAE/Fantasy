@@ -78,11 +78,11 @@ public class PlatformSpawner : MonoBehaviour {
     private void SpawnPlatform() {
         if (_isLeftSpawn) {
             _currentSpawnPos = new Vector3(_currentSpawnPos.x - _vars.nextXPos, _currentSpawnPos.y + _vars.nextYPos,
-                _currentSpawnPos.z + 0.1f);
+                _currentSpawnPos.z + 1f);
         }
         else {
             _currentSpawnPos = new Vector3(_currentSpawnPos.x + _vars.nextXPos, _currentSpawnPos.y + _vars.nextYPos,
-                _currentSpawnPos.z + 0.1f);
+                _currentSpawnPos.z + 1f);
         }
 
         var obj = PlatformPool.Instance.GetPlatformByTheme(_theme);
@@ -100,11 +100,11 @@ public class PlatformSpawner : MonoBehaviour {
         Vector3 obstaclePos;
         if (!_isLeftSpawn) {
             obstaclePos = new Vector3(_currentSpawnPos.x - _vars.nextXPos, _currentSpawnPos.y + _vars.nextYPos,
-                _currentSpawnPos.z + 0.1f);
+                _currentSpawnPos.z + 1f);
         }
         else {
             obstaclePos = new Vector3(_currentSpawnPos.x + _vars.nextXPos, _currentSpawnPos.y + _vars.nextYPos,
-                _currentSpawnPos.z + 0.1f);
+                _currentSpawnPos.z + 1f);
         }
 
         var obj = PlatformPool.Instance.GetObstacleByTheme(_theme);
@@ -123,15 +123,14 @@ public class PlatformSpawner : MonoBehaviour {
             info.isLeft = item.isLeft;
             info.count = item.count - 1;
             if (info.isLeft) {
-                info.pos = new Vector3(item.pos.x - _vars.nextXPos, item.pos.y + _vars.nextYPos, item.pos.z);
+                info.pos = new Vector3(item.pos.x - _vars.nextXPos, item.pos.y + _vars.nextYPos, item.pos.z + 1f);
             }
             else {
-                info.pos = new Vector3(item.pos.x + _vars.nextXPos, item.pos.y + _vars.nextYPos, item.pos.z);
+                info.pos = new Vector3(item.pos.x + _vars.nextXPos, item.pos.y + _vars.nextYPos, item.pos.z + 1f);
             }
 
             var obj = PlatformPool.Instance.GetPlatformByTheme(_theme);
             obj.GetComponent<BoxCollider2D>().enabled = false;
-            obj.GetComponent<SpriteRenderer>().sortingLayerName = "OldPlatfrom";
             obj.transform.position = info.pos;
             if (info.count > 0) {
                 _nextObstacleInfos.Add(info);

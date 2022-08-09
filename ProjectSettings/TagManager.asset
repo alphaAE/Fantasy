@@ -42,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Bg
+    uniqueID: 891379847
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -50,9 +53,6 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3620260781
-    locked: 0
-  - name: OldPlatform
-    uniqueID: 2775069243
     locked: 0
   - name: Pickup
     uniqueID: 3232606397
