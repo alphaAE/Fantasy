@@ -35,7 +35,7 @@ public class Player : MonoBehaviour {
             return;
         }
 
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
+        if (Input.GetMouseButtonDown(0) && !IsPointerOverGameObject(Input.mousePosition)) {
             Vector3 mousePos = Input.mousePosition;
             if (mousePos.x < (float)Screen.width / 2) {
                 //向左跳跃
@@ -45,6 +45,13 @@ public class Player : MonoBehaviour {
                 //向右跳跃
                 Jump();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+            Jump(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            Jump();
         }
     }
 
@@ -119,5 +126,16 @@ public class Player : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         EventCenter.Broadcast(EventType.ShowOverPanel);
         Destroy(gameObject);
+    }
+
+    //判断是否点击到UI （兼容移动平台）
+    private bool IsPointerOverGameObject(Vector2 mousePosition) {
+        //创建点击事件
+        PointerEventData eventData = new(EventSystem.current);
+        eventData.position = mousePosition;
+        List<RaycastResult> raycastResults = new();
+        //向点击位置发射射线
+        EventSystem.current.RaycastAll(eventData, raycastResults);
+        return raycastResults.Count > 0;
     }
 }
